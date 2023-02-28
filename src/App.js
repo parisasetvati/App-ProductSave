@@ -2,8 +2,15 @@ import react from 'react';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { Routes, Route } from "react-router-dom"
 import './App.css';
 import Home from './components/Home';
+import Layout from './components/Layout/Layout';
+import BookForm from './components/BookForm/BookForm';
+import ProductEdit from './components/ProductEdit/ProductEdit';
+import About from './components/About/About';
+
+
 // import { ToastProvider, useToasts } from 'react-toast-notifications';
 
 // const FormWithToasts = () => {
@@ -30,13 +37,22 @@ import Home from './components/Home';
 const App=()=> {
 
   return (
-    <div >
-    <Home/>
+    
+    
+  
+        <>
+         <Home/> 
+     
+     <ToastContainer />
+        </> 
+  
     
         
-        <ToastContainer />
+
+   
+    
        
-      </div>
+      
   );
 }
 

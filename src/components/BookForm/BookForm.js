@@ -17,11 +17,11 @@ const BookForm = ({addproduct,addcategory,edit}) => {
        // setCategoryName("");
     }
     return (  
-        <section className="w-full mx-2">
+        <section className="w-full mx-2 max-w-2xl">
             
-<h1 className=" text-slate-200 text-lg font-bold border-b my-4 py-4 mx-10 border-slate-400">Add New Product</h1>
+<h1 className=" text-slate-200 text-lg font-bold border-b my-4 py-4 mx-10 border-slate-400 max-[640px]:text-sm">{ edit ? "Edit Product" : "Add New Product"}</h1>
 
-            <div  className=" max-[900px]:w-4/5  max-[900px]:mx-auto lg:w-4/5 bg-slate-800 w-2/5 h-1/5 flex  items-center rounded-md mx-auto mt-10 mb-20"  >
+            <div  className=" w-4/5 mx-auto lg:w-4/5 bg-slate-800  h-1/5 flex  items-center rounded-md mt-10 mb-20"  >
 
             <form className="flex  flex-col   text-xs w-full my-5 text-slate-200">
                 <div className="flex flex-row  mb-5 w-full ">

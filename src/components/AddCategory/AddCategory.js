@@ -22,11 +22,11 @@ const AddCategory = ({categoryHandler}) => {
        }
     
     return ( 
-    <section className=" mx-6 mt-6" >
-       <div className={`w-full  ${isShow ? "" : "hidden"}`}>
-<h1 className= "text-slate-200 text-lg font-bold border-b my-8 py-4 mx-4 border-slate-400">Add New Category</h1>
+    <section className="w-full mx-2 max-w-2xl" >
+       <div className={` ${isShow ? "" : "hidden"}`}>
+<h1 className= "text-slate-200 text-lg font-bold border-b my-8 py-4 mx-10 border-slate-400 max-[640px]:text-sm">Add New Category</h1>
  
-        <div className="max-[900px]:w-4/5  max-[900px]:mx-auto lg:w-4/5 bg-slate-800 w-2/5 h-1/5 flex justify-center items-center rounded-md mx-auto mt-10  p-6 "  >
+        <div className=" mx-auto lg:w-4/5 w-4/5 h-1/5 bg-slate-800 flex justify-center items-center rounded-md  mt-10 mb-20"  >
 
         
         <form className="flex  flex-col   text-xs w-full my-5 text-slate-200">
@@ -47,9 +47,10 @@ const AddCategory = ({categoryHandler}) => {
         </form>
 
         </div>
-</div>
-         <button className={`${isShow && "hidden"} bg-transparent w-full border-slate-400 border-b text-slate-200 text-lg font-bold mt-10  pb-2 flex justify-start hover:text-slate-400 duration-150`} onClick={()=>{setIsShow(!isShow)}}>Add New Category</button>
-         
+</div >
+<div className='w-full mx-auto mt-10'>
+         <button className={`${isShow && "hidden"} w-1/4 flex justify-start text-slate-200 text-lg font-bold border-b my-4 py-2 ml-10  border-slate-300 hover:text-slate-400 duration-150  max-[640px]:text-sm`} onClick={()=>{setIsShow(!isShow)}}>Add New Category</button>
+         </div>
          </section>
      );
 }

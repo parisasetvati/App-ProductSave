@@ -9,9 +9,12 @@ import styles from "./Home.module.css";
 import Navbar from "./Navbar/Navbar";
 import Search from "./Search/Search.js";
 import Sort from "./Sort/Sort";
+import About from "./About/About";
 
 
-
+import { Routes, Route } from "react-router-dom"
+import Layout from "./Layout/Layout";
+import ProductEdit from "./ProductEdit/ProductEdit";
 
 const Home = () => {
   const [productlist, setProductlist] = useState([]);
@@ -161,27 +164,53 @@ setSearchValue(e.target.value.trim().toLowerCase());
     localStorage.setItem("categories",JSON.stringify(addcategory))
   }},[addcategory]);
   return (
-    <section>
-      <Navbar totalItem={productlist.filter((p) => p.id > 0).length} />
-      
-     <div className="lg:flex lg:flex-row lg:item-center ">
-      <div className="lg:w-full">
+    <section className="w-full">
+      {/* <Navbar totalItem={productlist.filter((p) => p.id > 0).length} /> */}
+      <Layout productlist={productlist}>
+      <Routes>
+            
+
+      <Route path="/" element={<div className="   w-full flex flex-col items-center justify-center">
       <AddCategory categoryHandler={AddToCategoryHandler} />
       <BookForm addproduct={addproduct} addcategory={addcategory} />
+      </div>} />
+            <Route path="/About" element={<About />} />
+            <Route path="/ProductList" element={  <div className=" w-full flex flex-col items-center justify-center">
+      <section className="mx-6 my-8 w-3/5">
+        
+
+<h1 className=" text-slate-200 text-lg font-bold border-b my-4 mx-10 py-4  border-slate-400 max-[640px]:text-sm">Filter Product</h1>
+      <Search  searchValue={searchValue} onSearch={searchHandler} />
+   <Sort sort={sort} onSort={sortHandler}/>
+   <Filtercategory filtercategory={filtercategory} onfilter={filterHandler} addcategory={addcategory}/> 
+    </section>
+      <BookList productlist={filterproduct} categories={addcategory} onUpdate={onUpdate}  setProductlist={setProductlist} addcategory={addcategory}/>
+      
       </div>
-      <div className="lg:w-full">
+      }/>
+            {/* <Route path="/ProductEdit" element={<ProductEdit/>} /> */}
+           
+          </Routes>
+        
+     {/* <div className="lg:flex lg:flex-row lg:item-center "> */}
+      {/* <div className="lg:w-full">
+      <AddCategory categoryHandler={AddToCategoryHandler} />
+      <BookForm addproduct={addproduct} addcategory={addcategory} />
+      </div> */}
+      {/* <div className="lg:w-full">
       <section className="mx-6 my-8">
         
 
-<h1 className=" text-slate-200 text-lg font-bold border-b my-4 mx-10 py-4 mx-6 border-slate-400">Filter Product</h1>
+<h1 className=" text-slate-200 text-lg font-bold border-b my-4 mx-10 py-4  border-slate-400">Filter Product</h1>
       <Search  searchValue={searchValue} onSearch={searchHandler} />
    <Sort sort={sort} onSort={sortHandler}/>
-   <Filtercategory filtercategory={filtercategory} onfilter={filterHandler} addcategory={addcategory}/>
-   </section>
-     <BookList productlist={filterproduct} categories={addcategory} onUpdate={onUpdate}  setProductlist={setProductlist} addcategory={addcategory}/>
-     
-      </div>
-      </div>
+   <Filtercategory filtercategory={filtercategory} onfilter={filterHandler} addcategory={addcategory}/> 
+    </section>
+      <BookList productlist={filterproduct} categories={addcategory} onUpdate={onUpdate}  setProductlist={setProductlist} addcategory={addcategory}/>
+      
+      </div>*/}
+      {/* </div>  */}
+      </Layout>
      </section>
      
     
