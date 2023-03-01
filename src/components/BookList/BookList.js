@@ -4,6 +4,7 @@ import { useState } from "react";
 import ProductEdit from "../ProductEdit/ProductEdit";
 import BookForm from "../BookForm/BookForm";
 import 'react-tooltip/dist/react-tooltip.css';
+import { NavLink } from "react-router-dom";
 import {Tooltip } from 'react-tooltip'
 const BookList = ({productlist,categories,setProductlist,addcategory,onUpdate}) => {
   const[edit,setEdit]=useState({productName:"",id:null,category:"",creatEdit:""})
@@ -19,10 +20,12 @@ setProductlist(filterProduct);
   const onUpdateProduct = (product) => {
     
     onUpdate(edit.id ,product);
-    setEdit({productName:"",id:null,category:"",creatEdit:""})
+    if( product.productName && product.quantity && product.categoryId)  {
+    
+     setEdit({productName:"",id:null,category:"",creatEdit:""})
   
   };
-
+  };
 
   const renderProduct=()=>{
     
@@ -66,9 +69,13 @@ setProductlist(filterProduct);
     
       </div>
       </div>
+     
          </div>})
          };
- 
+  <div className='w-full flex justify-start items-center mb-10 ml-20'>
+            
+            <NavLink to="/"><span className='text-slate-300 mb-5 font-bold border-b-2 p-1 rounded-md text-sm hover:border-slate-700 hover:text-slate-700 hover:bg-slate-300'>Home Page</span></NavLink>
+            </div>
  </div> 
 
   };
@@ -76,7 +83,7 @@ setProductlist(filterProduct);
       <div className="w-3/5">
 
  {edit.id ? <BookForm   addproduct={onUpdateProduct} addcategory={addcategory}  edit={edit}/> :  renderProduct()}
-
+ 
       </div>
      
     

@@ -100,7 +100,14 @@ const Home = () => {
 const onUpdate=(id,product)=>{
 
   
-   // console.log(id, newValue);
+  if(! product.productName || !product.quantity || ! product.categoryId)  {
+    toast.error("please Enter Product Complete!",{
+        
+      className:'toast-message'
+ });
+    // NotificationManager.warning('Warning message', 'Please input ProductName', 3000)
+  }
+  else{
     const index = productlist.findIndex((product) => product.id === id);
     const selectProduct = { ...productlist[index] };
     selectProduct.productName = product.productName;
@@ -111,8 +118,13 @@ const onUpdate=(id,product)=>{
     const updateProduct = [...productlist];
     updateProduct[index] = selectProduct;
     setProductlist(updateProduct);
+    toast.success("Product Edit Success", {
+      closeButton: true,
+      
+       className:'toast-message'
+   });
 
-
+  }
 };
   const searchHandler=(e)=>{
 setSearchValue(e.target.value.trim().toLowerCase());

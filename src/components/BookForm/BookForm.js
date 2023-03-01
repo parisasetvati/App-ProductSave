@@ -1,4 +1,5 @@
 import React,{ useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import styles from "./BookForm.module.css"
 const BookForm = ({addproduct,addcategory,edit}) => {
     const [product,setProduct]=useState( edit ? {productName:edit.productName,categoryId:edit.categoryId,quantity:edit.quantity}: {productName:"",categoryId:"",quantity:0});
@@ -13,15 +14,18 @@ const BookForm = ({addproduct,addcategory,edit}) => {
         e.preventDefault();
          addproduct(product);
       //  console.log(product);
+      if( product.productName && product.quantity && product.categoryId)  {
+    
         setProduct({productName:"",categoryId:"",quantity:""});
        // setCategoryName("");
     }
+}
     return (  
         <section className="w-full mx-2 max-w-2xl">
             
 <h1 className=" text-slate-200 text-lg font-bold border-b my-4 py-4 mx-10 border-slate-400 max-[640px]:text-sm">{ edit ? "Edit Product" : "Add New Product"}</h1>
 
-            <div  className=" w-4/5 mx-auto lg:w-4/5 bg-slate-800  h-1/5 flex  items-center rounded-md mt-10 mb-20"  >
+            <div  className=" w-4/5 mx-auto lg:w-4/5 bg-slate-800  h-1/5 flex  items-center rounded-md mt-10 mb-10"  >
 
             <form className="flex  flex-col   text-xs w-full my-5 text-slate-200">
                 <div className="flex flex-row  my-5 ml-5 w-full ">
@@ -49,6 +53,11 @@ return <option key={p.id} value={p.id} >{p.category}</option>
             <button className="   w-40 h-8 bg-slate-600 font-bold text-slate-200 rounded-md hover:bg-slate-300  hover:text-slate-800" onClick={submitHanler}> {edit ? "Edit Product" :"Add Product"}</button></div>
             </form>
             </div>
+            
+            {edit ? "": <div className='w-full flex justify-start items-center mb-10 ml-20'>
+            
+            <NavLink to="/ProductList"><span className='text-slate-300 mb-5 font-bold border-b-2 p-1 rounded-md text-sm hover:border-slate-700 hover:text-slate-700 hover:bg-slate-300'>Show ProductList</span></NavLink>
+             </div>} 
         </section>
     );
 }
