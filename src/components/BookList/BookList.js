@@ -30,29 +30,29 @@ setProductlist(filterProduct);
 
    return <div  className="flex flex-col  h-full justify-center items-center mx-auto w-full "  >
     
-    <h1 className=" text-slate-200 text-lg font-bold border-b w-full py-2 my-5 border-slate-400 max-[640px]:text-sm">Product List</h1>
+    <h1 className=" text-slate-200 text-lg font-bold border-b w-full py-2 my-5 border-slate-400 max-w-full max-[640px]:text-sm">Product List</h1>
     {productlist.map((products)=>{
     // console.log(products);
-     return <div  key={products.id}   className=" w-full pb-6  px-3  text-sm font-bold  flex flex-row  items-center justify-between    text-slate-400  mx-3 my-6  border-b border-slate-400 max-[640px]:flex-row ">
+     return <div  key={products.id}   className=" w-full pb-6  px-3  text-sm font-bold  flex flex-row  items-center justify-between    text-slate-400  max-w-full mx-3 my-6  border-b border-slate-400 max-[640px]:flex-row max-[640px]:pb-6 max-[640px]:my-3 ">
 
      <div>
      <span className="text-lg mx-6 "> {products.productName} </span> 
       </div>
       
-      <div className="flex items-center max-[640px]:flex-col max-[640px]:mt-20">
+      <div className="flex items-center  ">
         <div className="flex items-center">
       
       <span className="mx-4  w-auto h-6  border-2 border-slate-700 rounded-md px-6   flex justify-center items-center text-slate-300 text-sm ">{findCategory(products.categoryId)}</span> 
       
-     <span className=" mx-4 w-6 h-6 bg-slate-300 rounded-full  flex justify-center items-center text-slate-500 text-sm ">{products.quantity}</span> 
+     <span className=" mx-4 w-6 h-6 bg-slate-300 rounded-full  flex justify-center items-center text-slate-500 text-sm  ">{products.quantity}</span> 
  
    </div>
-   <div className="flex items-center max-[640px]:mt-10">
-     <button className="mx-4 flex justify-center items-center border-red-700 border-2 w-8 h-8 bg-transparent text-slate-200 rounded-md text-xs" onClick={()=>deleteProduct(products.id)}><BiTrash className=" text-md font-bold" /></button>
-     <button className="mx-4 flex justify-center items-center border-slate-400 border-2 w-8 h-8 bg-transparent text-slate-200 rounded-md text-xs"  data-tooltip-id="my-tooltip"  data-tooltip-content= {products.creatEdit &&   new Date(products.creatEdit).toLocaleString("fa-IR")} onClick={()=>setEdit(products)} ><BiMessageSquareEdit className=" text-lg font-bold" /></button>
+   <div className="flex items-center ">
+     <button className="mx-4 flex justify-center items-center border-red-700 border-2 w-8 h-8 bg-transparent text-slate-200 rounded-md text-sm hover:text-lg hover:text-red-700 hover:bg-slate-300 " onClick={()=>deleteProduct(products.id)}><BiTrash className=" text-md font-bold" /></button>
+     <button className="mx-4 flex justify-center items-center border-slate-400 border-2 w-8 h-8 bg-transparent text-slate-200 rounded-md text-xs hover:bg-slate-300 hover:text-slate-800  hover:border-slate-700 "  data-tooltip-id="my-tooltip"  data-tooltip-content= {products.creatEdit &&   new Date(products.creatEdit).toLocaleString("fa-IR")} onClick={()=>setEdit(products)} ><BiMessageSquareEdit className=" text-lg font-bold" /></button>
      <div>
       
-        <span className="mx-1  h-4  border-2 border-slate-700  rounded-md px-6 py-4 flex justify-center items-center text-slate-300 text-sm ">{new Date(products.createdArt).toLocaleDateString("fa-IR")}</span> 
+        <span className="mx-1  h-4  border-2 border-slate-700  rounded-md px-6 py-4 flex justify-center items-center text-slate-300 text-sm max-[640px]:hidden ">{new Date(products.createdArt).toLocaleDateString("fa-IR")}</span> 
         
      {/* <div className="flex flex-col item-center justify-center "> */}
      <Tooltip id="my-tooltip"/>

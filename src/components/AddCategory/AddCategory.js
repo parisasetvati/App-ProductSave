@@ -30,18 +30,18 @@ const AddCategory = ({categoryHandler}) => {
 
         
         <form className="flex  flex-col   text-xs w-full my-5 text-slate-200">
-            <div className="flex flex-row  mb-5 w-full ">
+            <div className="flex flex-row  my-5 w-full ml-5 ">
         <label className='text-xs w-24  text-slate-200 '> Category :</label>
         <input className="w-2/5 h-8 rounded-md  bg-transparent focus:outline focus:outline-none  focus:outline-offset-0 focus:outline-transparent focus:border focus:border-slate-200 " type="text"   onChange={addCategoryHandler} value={categoris.category} name="category" ></input>
         </div>
-        <div className="flex flex-row mb-5  w-full">
+        <div className="flex flex-row mb-5 ml-5 w-full">
         <label className=' text-xs w-24 text-slate-200'> Description :</label>
         <textarea className="w-3/5 h-15 rounded-md  bg-transparent  border-slate-500" type="text"   onChange={addCategoryHandler} value={categoris.description} name="description"></textarea>
         </div>
-        <div className='mt-3 font-bold flex justify-center items-center'>
-        <button  className="w-32  h-8 text-xs text-slate-500  border  border-slate-500 rounded-md mr-6 " onClick={()=>setIsShow(!isShow)}>Cancle</button> 
+        <div className='mt-5 mx-auto font-bold flex justify-center items-center'>
+        <button  className="w-32  h-8 text-xs text-slate-500  border  border-slate-500 rounded-md mr-6 hover:border-slate-200 hover:text-slate-200 " onClick={()=>setIsShow(!isShow)}>Cancle</button> 
 
-        <button className="w-32 h-8 bg-slate-600 text-xs text-slate-200 rounded-md " onClick={AddToSelectHandler}>AddCategory</button>
+        <button className="w-32 h-8 bg-slate-600 text-xs text-slate-200 rounded-md  hover:bg-slate-300  hover:text-slate-800" onClick={AddToSelectHandler}>AddCategory</button>
         </div>
        
         </form>

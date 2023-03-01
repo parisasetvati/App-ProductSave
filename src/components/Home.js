@@ -170,7 +170,7 @@ setSearchValue(e.target.value.trim().toLowerCase());
       <Routes>
             
 
-      <Route path="/" element={<div className="   w-full flex flex-col items-center justify-center">
+      <Route path="/" element={<div className="   w-full flex flex-col items-center justify-center max-w-full">
       <AddCategory categoryHandler={AddToCategoryHandler} />
       <BookForm addproduct={addproduct} addcategory={addcategory} />
       </div>} />
@@ -179,7 +179,7 @@ setSearchValue(e.target.value.trim().toLowerCase());
       <section className="mx-6 my-8 w-3/5">
         
 
-<h1 className=" text-slate-200 text-lg font-bold border-b my-4 mx-10 py-4  border-slate-400 max-[640px]:text-sm">Filter Product</h1>
+<h1 className=" text-slate-200 text-lg font-bold border-b my-4 mx-10 py-4  border-slate-400 max-w-full max-[640px]:text-sm">Filter Product</h1>
       <Search  searchValue={searchValue} onSearch={searchHandler} />
    <Sort sort={sort} onSort={sortHandler}/>
    <Filtercategory filtercategory={filtercategory} onfilter={filterHandler} addcategory={addcategory}/> 
