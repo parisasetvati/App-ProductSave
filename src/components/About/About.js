@@ -19,7 +19,7 @@ On this page, there is the name of the product, number, category, date of creati
 , which can be used to delete and edit the product by clicking on it.By holding the mouse over the Edit button, the time of the last edit of the product can be seen as a Tooltip.Product information is stored in LocalStorege and will be stored there for a long time.</p>
 
             </div>
-            <div className='w-full flex justify-start items-center my-6 ml-56 '>
+            <div className='w-full flex justify-start items-center my-6 ml-56 max-[640px]:ml-4'>
             
             <NavLink to="/"><span className='text-slate-300 mb-5 font-bold border-b-2 px-2 py-1 rounded-md text-sm hover:border-slate-700 hover:text-slate-700 hover:bg-slate-300'>Back</span></NavLink>
              </div>

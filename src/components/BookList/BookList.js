@@ -78,7 +78,7 @@ setProductlist(filterProduct);
 
   };
     return (  
-      <div className="w-3/5 max-[768px]:w-full">
+      <div className="w-3/5 ">
 
  {edit.id ? <BookForm   addproduct={onUpdateProduct} addcategory={addcategory}  edit={edit}/> :  renderProduct()}
  
