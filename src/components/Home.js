@@ -175,7 +175,7 @@ setSearchValue(e.target.value.trim().toLowerCase());
     localStorage.setItem("categories",JSON.stringify(addcategory))
   }},[addcategory]);
   return (
-    <section className="w-full">
+    <section className="w-full overflow-x-hidden scroll-smooth">
       
       <Layout productlist={productlist}>
       <Routes>

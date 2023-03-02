@@ -37,10 +37,10 @@ const BookForm = ({addproduct,addcategory,edit}) => {
         <input className="w-2/5 h-8 rounded-md  ml-6 bg-transparent focus:outline focus:outline-none  focus:outline-offset-0 focus:outline-transparent focus:border focus:border-slate-200 " type="number"  value={product.quantity} onChange={changeHandler} name="quantity" >
         </input>
                 </div>
-        <div className="flex flex-row mb-6 ml-5 w-full">
-        <label className='text-xs  text-slate-200 '> Category Name :</label>
+        <div className="flex flex-row mb-6 ml-5 mt-4 w-full">
+        <label className='text-xs  text-slate-200 mt-2 '> Category Name :</label>
 
-<select  className='rounded-md mt-4 ml-4 w-1/3 text-slate-800 text-xs h-2/4' onChange={changeHandler} name="categoryId" value={product.categoryId} >
+<select  className='rounded-md ml-4 w-1/3 text-slate-800 text-xs h-2/4' onChange={changeHandler} name="categoryId" value={product.categoryId} >
 <option value="">select Category</option>
   
     {addcategory.map((p)=>{
