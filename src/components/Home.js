@@ -14,7 +14,7 @@ import About from "./About/About";
 
 import { Routes, Route } from "react-router-dom"
 import Layout from "./Layout/Layout";
-import ProductEdit from "./ProductEdit/ProductEdit";
+
 
 const Home = () => {
   const [productlist, setProductlist] = useState([]);
@@ -24,13 +24,12 @@ const Home = () => {
   const[sort,setSort]=useState("latest");
  const [filtercategory, setFilterCategory]=useState("");
   const addproduct = (product) => {
-  // console.log(product);
   if(! product.productName && !product.quantity && ! product.categoryId)  {
     toast.error("please Enter Product Complete!",{
         
       className:'toast-message'
  });
-    // NotificationManager.warning('Warning message', 'Please input ProductName', 3000)
+  
   }
   else if (! product.productName){
     toast.error("please Enter Product Name!",{
@@ -51,7 +50,7 @@ const Home = () => {
  });
   }
     else{
-  //   // console.log(bookName, categoryName);
+  
     const newProduct= {...product , createdArt: new Date().toISOString(),id:new Date().getTime()}
     setProductlist([
       ...productlist,newProduct
@@ -105,7 +104,7 @@ const onUpdate=(id,product)=>{
         
       className:'toast-message'
  });
-    // NotificationManager.warning('Warning message', 'Please input ProductName', 3000)
+    
   }
   else{
     const index = productlist.findIndex((product) => product.id === id);
@@ -177,17 +176,17 @@ setSearchValue(e.target.value.trim().toLowerCase());
   }},[addcategory]);
   return (
     <section className="w-full">
-      {/* <Navbar totalItem={productlist.filter((p) => p.id > 0).length} /> */}
+      
       <Layout productlist={productlist}>
       <Routes>
             
 
-      <Route path="/" element={<div className="   w-full flex flex-col items-center justify-center max-w-full">
+      <Route path="/" element={<div className="   w-full flex flex-col items-center justify-center mt-24 max-w-full">
       <AddCategory categoryHandler={AddToCategoryHandler} />
       <BookForm addproduct={addproduct} addcategory={addcategory} />
       </div>} />
             <Route path="/About" element={<About />} />
-            <Route path="/ProductList" element={  <div className=" w-full flex flex-col items-center justify-center">
+            <Route path="/ProductList" element={  <div className=" w-full flex flex-col items-center justify-center mt-24">
       <section className="mx-6 my-8 w-3/5">
         
 
@@ -200,28 +199,7 @@ setSearchValue(e.target.value.trim().toLowerCase());
       
       </div>
       }/>
-            {/* <Route path="/ProductEdit" element={<ProductEdit/>} /> */}
-           
           </Routes>
-        
-     {/* <div className="lg:flex lg:flex-row lg:item-center "> */}
-      {/* <div className="lg:w-full">
-      <AddCategory categoryHandler={AddToCategoryHandler} />
-      <BookForm addproduct={addproduct} addcategory={addcategory} />
-      </div> */}
-      {/* <div className="lg:w-full">
-      <section className="mx-6 my-8">
-        
-
-<h1 className=" text-slate-200 text-lg font-bold border-b my-4 mx-10 py-4  border-slate-400">Filter Product</h1>
-      <Search  searchValue={searchValue} onSearch={searchHandler} />
-   <Sort sort={sort} onSort={sortHandler}/>
-   <Filtercategory filtercategory={filtercategory} onfilter={filterHandler} addcategory={addcategory}/> 
-    </section>
-      <BookList productlist={filterproduct} categories={addcategory} onUpdate={onUpdate}  setProductlist={setProductlist} addcategory={addcategory}/>
-      
-      </div>*/}
-      {/* </div>  */}
       </Layout>
      </section>
      

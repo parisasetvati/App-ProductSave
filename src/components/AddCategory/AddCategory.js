@@ -1,7 +1,5 @@
-// import styles from "./AddCategory.module.css"
 import React,{ useState } from 'react';
 import 'react-notifications/lib/notifications.css';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
 const AddCategory = ({categoryHandler}) => {
 
 

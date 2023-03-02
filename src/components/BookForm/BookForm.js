@@ -1,9 +1,8 @@
 import React,{ useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import styles from "./BookForm.module.css"
 const BookForm = ({addproduct,addcategory,edit}) => {
     const [product,setProduct]=useState( edit ? {productName:edit.productName,categoryId:edit.categoryId,quantity:edit.quantity}: {productName:"",categoryId:"",quantity:0});
-    // const[categoryName,setCategoryName]=useState("");
+    
     const changeHandler=({target})=>{
     
         setProduct({...product,[target.name]:target.value});
@@ -13,15 +12,15 @@ const BookForm = ({addproduct,addcategory,edit}) => {
     const submitHanler=(e)=>{
         e.preventDefault();
          addproduct(product);
-      //  console.log(product);
+      
       if( product.productName && product.quantity && product.categoryId)  {
     
         setProduct({productName:"",categoryId:"",quantity:""});
-       // setCategoryName("");
+    
     }
 }
     return (  
-        <section className="w-full mx-2 max-w-2xl">
+        <section className="w-full mx-2 max-w-2xl ">
             
 <h1 className=" text-slate-200 text-lg font-bold border-b my-4 py-4 mx-10 border-slate-400 max-[640px]:text-sm">{ edit ? "Edit Product" : "Add New Product"}</h1>
 

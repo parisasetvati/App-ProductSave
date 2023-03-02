@@ -1,7 +1,5 @@
-import styles from "./BookList.module.css"
 import { BiTrash,BiMessageSquareEdit} from "react-icons/bi";
 import { useState } from "react";
-import ProductEdit from "../ProductEdit/ProductEdit";
 import BookForm from "../BookForm/BookForm";
 import 'react-tooltip/dist/react-tooltip.css';
 import { NavLink } from "react-router-dom";
@@ -44,8 +42,8 @@ setProductlist(filterProduct);
       
       <div className="flex items-center  ">
         <div className="flex items-center">
-      
-      <span className="mx-4  w-auto h-6  border-2 border-slate-700 rounded-md px-6   flex justify-center items-center text-slate-300 text-sm ">{findCategory(products.categoryId)}</span> 
+  
+      <span className="mx-4 w-auto h-6  border-2 border-slate-700 rounded-md px-6   flex justify-center items-center text-slate-300 text-sm ">{findCategory(products.categoryId)}</span> 
       
      <span className=" mx-4 w-6 h-6 bg-slate-300 rounded-full  flex justify-center items-center text-slate-500 text-sm  ">{products.quantity}</span> 
  
@@ -80,7 +78,7 @@ setProductlist(filterProduct);
 
   };
     return (  
-      <div className="w-3/5">
+      <div className="w-3/5 max-[768px]:w-full">
 
  {edit.id ? <BookForm   addproduct={onUpdateProduct} addcategory={addcategory}  edit={edit}/> :  renderProduct()}
  
