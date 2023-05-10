@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 
 const About = () => {
     return (  
-        <section className="text-slate-300 mx-auto mb-16 w-full mt-40">
-            <div className="w-2/3 bg-slate-800 text-justify flex  flex-col justify-center mx-auto items-center mt-12 px-10 py-5 rounded-md">
+        <section className=" text-slate-300 mx-auto mb-16 w-full mt-40 ">
+            <div className="w-3/4 text-justify flex  flex-col justify-center mx-auto items-center mt-38 px-10 py-5 ">
             <h1 className="font-bold p-4">About Me & Project</h1>
                 <p className="leading-8 pt-2">I am Parisa Setvati Ragheb, I have been working in front for about 3 years. This project is one of my works that was designed using Html & Framework Tailwind & React.js.</p>
                 <p className="leading-8 pt-2">This is an application for storing warehouse products that has different features. In this part, we are going to explain about the project and how its code works for you.</p>

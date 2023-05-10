@@ -14,6 +14,7 @@ import About from "./About/About";
 
 import { Routes, Route } from "react-router-dom"
 import Layout from "./Layout/Layout";
+import { FaLess } from "react-icons/fa";
 
 
 const Home = () => {
@@ -23,38 +24,24 @@ const Home = () => {
   const[searchValue,setSearchValue]=useState("");
   const[sort,setSort]=useState("latest");
  const [filtercategory, setFilterCategory]=useState("");
+
   const addproduct = (product) => {
-  if(! product.productName && !product.quantity && ! product.categoryId)  {
+  if(! product.productName || !product.quantity || ! product.categoryId)  {
+    // setEnterValue({enterProduct:false,enterCategory:false,enterQuantity:false});
+   
     toast.error("please Enter Product Complete!",{
         
       className:'toast-message'
  });
+  }
   
-  }
-  else if (! product.productName){
-    toast.error("please Enter Product Name!",{
-        
-      className:'toast-message'
- });
-  }
-  else if(! product.quantity){
-    toast.error("please Enter Product quantity!",{
-        
-      className:'toast-message'
- });;
-  }
-  else if(! product.categoryId){
-    toast.error("please Enter Product Category!",{
-        
-      className:'toast-message'
- });
-  }
-    else{
+    else {
   
     const newProduct= {...product , createdArt: new Date().toISOString(),id:new Date().getTime()}
     setProductlist([
       ...productlist,newProduct
     ]);
+    // setEnterValue( {enterProduct:false,enterCategory:true,enterQuantity:true});
     toast.success("Product Added Success.",{
         
       className:'toast-message'
@@ -65,19 +52,21 @@ const Home = () => {
   const AddToCategoryHandler = (categoris) => {
     if(!categoris.category && !categoris.description)  {
       
-      
+      // setEnterValue(! enterValue);
         toast.error("Please Enter Category Complete!",{
         
           className:'toast-message'
      });
     }
     else if(! categoris.category){
+      // setEnterValue(! enterValue);
       toast.error("Please Enter Category Name!",{
       
         className:'toast-message'
    });
     }
     else if(! categoris.description){
+      // setEnterValue(! enterValue);
       toast.error('Please Set Description!', {
       
          className:'toast-message'
@@ -87,7 +76,7 @@ const Home = () => {
     else{
       const newCategory= {...categoris , createdArt: new Date().toISOString(), id:new Date().getTime()}
     setAddCategory([...addcategory,newCategory]);
-    
+    // setEnterValue(true);
     toast.success("Category Added Success", {
       closeButton: true,
       
@@ -100,6 +89,7 @@ const onUpdate=(id,product)=>{
 
   
   if(! product.productName || !product.quantity || ! product.categoryId)  {
+    // setEnterValue(! enterValue);
     toast.error("please Enter Product Complete!",{
         
       className:'toast-message'
@@ -122,7 +112,7 @@ const onUpdate=(id,product)=>{
       
        className:'toast-message'
    });
-
+  //  setEnterValue(true);
   }
 };
   const searchHandler=(e)=>{
@@ -175,7 +165,7 @@ setSearchValue(e.target.value.trim().toLowerCase());
     localStorage.setItem("categories",JSON.stringify(addcategory))
   }},[addcategory]);
   return (
-    <section className="w-full overflow-x-hidden scroll-smooth">
+    <section className="w-full  overflow-x-hidden scroll-smooth ">
       
       <Layout productlist={productlist}>
       <Routes>
@@ -183,7 +173,7 @@ setSearchValue(e.target.value.trim().toLowerCase());
 
       <Route path="/" element={<div className="   w-full flex flex-col items-center justify-center mt-24 max-w-full">
       <AddCategory categoryHandler={AddToCategoryHandler} />
-      <BookForm addproduct={addproduct} addcategory={addcategory} />
+      <BookForm addproduct={addproduct} addcategory={addcategory}  />
       </div>} />
             <Route path="/About" element={<About />} />
             <Route path="/ProductList" element={  <div className=" w-full flex flex-col items-center justify-center mt-24">
