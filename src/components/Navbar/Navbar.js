@@ -11,7 +11,7 @@ const item = [
 
 const Navbar = ({totalItem}) => {
     return (
-        <header className="w-full h-24 fixed top-0   bg-slate-800 ">
+        <header className="w-full h-24 fixed top-0 z-10  bg-slate-800 ">
 
 <div className="w-2/3 text-slate-200  h-full  flex flex-row justify-between items-center ml-40  max-[768px]:pr-4  max-[768px]:ml-4">
 
@@ -40,7 +40,7 @@ const Navbar = ({totalItem}) => {
       </ul>
     </nav>
       
-       <div className='flex flex-row justify-center items-center   max-[640px]:flex-col  max-[640px]:mt-8 max-[500px]:hidden '>
+       <div className='flex flex-row justify-center items-center   max-[640px]:flex-col  max-[640px]:mt-8 max-[600px]:hidden '>
        <h2 className="font-bold max-[768px]:text-xs ">Products Shopping</h2>
         <span className="w-6 h-6 bg-slate-300 rounded-full ml-3 flex justify-center items-center text-slate-500 text-sm font-bold max-[640px]:my-3 max-[640px]:w-5 max-[640px]:h-5 max-[640px]:text-xs  ">{totalItem}</span>
   

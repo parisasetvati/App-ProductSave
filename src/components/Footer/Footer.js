@@ -7,7 +7,7 @@ const Footer = () => {
         bg-slate-800 w-screen text-slate-300  sticky inset-x-0 bottom-0 h-30"
     >
       <div className=" w-2/3 ml-40  mr-8 flex justify-between items-center py-3 max-[600px]:ml-10 max-[600px]:w-full max-[600px]:pr-8">
-        <ul className="flex flex-col text-sm max-[768px]:mx-8 max-[768px]:text-xs  max-[400px]:hidden">
+        <ul className="flex flex-col text-sm max-[768px]:mx-8 max-[768px]:text-xs  max-[768px]:hidden">
           <li className="my-1  ">
             {" "}
             <NavLink to="/">
