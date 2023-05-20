@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const item = [
   { name: "Home", to: "/" },
-  { name: "ProductList", to: "/ProductList" },
+  { name: "productList", to: "/ProductList" },
   { name: "About", to: "/About" },
  
   

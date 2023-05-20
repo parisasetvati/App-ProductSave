@@ -12,8 +12,6 @@ const validationSchema = Yup.object({
   quantity: Yup.number()
     .integer()
     .required("Quantity is valid")
-    // .matches(/^[1-9]$/, "Invalid quantity")
-    // .validate(!/^\d{1-3}$/)
     .min(1, "quantity Incorrect")
     .max(999, "quantity Incorrect")
     .nullable(),
@@ -26,7 +24,7 @@ const initialValues = {
   categoryId: "",
 };
 
-const BookForm = ({ addproduct, addcategory, edit }) => {
+const BookForm = ({ addproduct, addcategory, edit, setEdit }) => {
   const [product, setProduct] = useState(
     edit
       ? {
@@ -37,18 +35,8 @@ const BookForm = ({ addproduct, addcategory, edit }) => {
       : { productName: "", categoryId: "", quantity: 0 }
   );
   const onSubmit = (id, { resetForm }) => {
-    console.log(id);
-    if (id.productName === "" || id.quantity === "" || id.categoryId === "") {
-      // setEnterValue({enterProduct:false,enterCategory:false,enterQuantity:false});
-
-      toast.error("please Enter Product Complete!", {
-        className: "toast-message",
-      });
-    } else {
-      // setProduct(id);
-      addproduct(id);
-      resetForm();
-    }
+    addproduct(id);
+    resetForm();
   };
   const formik = useFormik({
     initialValues: edit || initialValues,
@@ -64,19 +52,19 @@ const BookForm = ({ addproduct, addcategory, edit }) => {
         {edit ? "Edit Product" : "Add New Product"}
       </h1>
 
-      <div className=" w-4/5 mx-auto lg:w-4/5 bg-slate-800  h-1/5 flex  items-center rounded-md mt-10 mb-10">
+      <div className=" w-4/5 mx-auto lg:w-4/5 bg-slate-800  h-3/5 flex  items-center rounded-md mt-10 mb-10">
         <form
           onSubmit={formik.handleSubmit}
           className=" flex  flex-col   text-xs w-full my-5 text-slate-200 "
         >
-          <div className="flex flex-row  my-5 ml-5 w-full ">
-            <label className="text-xs  text-slate-200 mt-2 ">Name</label>
+          <div className="flex flex-row  my-5 ml-5 w-full max-[400px]:flex-col max-[400px]:items-start max-[400px]:ml-2 ">
+            <label className="text-xs  text-slate-200 mt-2 max-[400px]:ml-4 ">Name</label>
 
             <input
               id="productName"
               name="productName"
               type="text"
-              className="w-2/5 h-8 rounded-md ml-7 bg-transparent focus:outline  border focus:outline-none  focus:outline-offset-0 focus:outline-transparent focus:border focus:border-slate-200"
+              className="w-2/5 h-8 rounded-md ml-7 bg-transparent focus:outline  border focus:outline-none  focus:outline-offset-0 focus:outline-transparent focus:border focus:border-slate-200 max-[400px]:ml-4 max-[400px]:mt-4 max-[400px]:w-4/5"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.productName}
@@ -87,14 +75,14 @@ const BookForm = ({ addproduct, addcategory, edit }) => {
               </div>
             )}
           </div>
-          <div className="flex flex-row  my-5 ml-5 w-full ">
-            <label className="text-xs  text-slate-200 mt-2 ">quantity</label>
+          <div className="flex flex-row  my-5 ml-5 w-full max-[400px]:flex-col max-[400px]:items-start max-[400px]:ml-2  ">
+            <label className="text-xs  text-slate-200 mt-2 max-[400px]:ml-4 ">quantity</label>
 
             <input
               id="quantity"
               name="quantity"
               type="text"
-              className="w-2/5 h-8 rounded-md ml-6 bg-transparent focus:outline  border focus:outline-none  focus:outline-offset-0 focus:outline-transparent focus:border focus:border-slate-200"
+              className="w-2/5 h-8 rounded-md ml-6 bg-transparent focus:outline  border focus:outline-none  focus:outline-offset-0 focus:outline-transparent focus:border focus:border-slate-200 max-[400px]:ml-4 max-[400px]:mt-4 max-[400px]:w-4/5"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.quantity}
@@ -105,14 +93,14 @@ const BookForm = ({ addproduct, addcategory, edit }) => {
               </div>
             )}
           </div>
-          <div className="flex flex-row mb-6 ml-5 mt-4 w-full">
-            <label className="text-xs  text-slate-200 mt-2 ">
+          <div className="flex flex-row mb-6 ml-5 mt-4 w-full max-[400px]:flex-col max-[400px]:items-start max-[400px]:ml-2 ">
+            <label className="text-xs  text-slate-200 mt-2  max-[400px]:ml-4">
               Category Name :
             </label>
 
             <select
               name="categoryId"
-              className="rounded-md ml-4 w-1/3 text-slate-800 border-2 text-xs h-2/4"
+              className="rounded-md ml-4 w-1/3 text-slate-800 border-2 text-xs h-2/4 max-[400px]:ml-4 max-[400px]:mt-4 max-[400px]:w-4/5"
               type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -137,7 +125,7 @@ const BookForm = ({ addproduct, addcategory, edit }) => {
                {" "}
           <div className="w-full flex justify-center mt-4 mr-8 ">
             <button
-              className=" w-40 h-8 bg-slate-600 font-bold text-slate-200 rounded-md hover:bg-slate-300  hover:text-slate-900 disabled:bg-gray-500 disabled:text-gray-400 disabled:hover:bg-gray-500 disabled:hover:text-gray-400 disabled:cursor-not-allowed"
+              className=" w-40 h-8 bg-slate-600 font-bold text-slate-200 rounded-md hover:bg-slate-300  hover:text-slate-900 disabled:bg-gray-500 disabled:text-gray-400 disabled:hover:bg-gray-500 disabled:hover:text-gray-400 disabled:cursor-not-allowed max-[450px]:w-24"
               type="submit"
               disabled={!formik.isValid}
             >
@@ -155,7 +143,7 @@ const BookForm = ({ addproduct, addcategory, edit }) => {
           <NavLink to="/ProductList">
             <span className="text-slate-300 mb-5 font-bold border-b-2 p-1 rounded-md text-sm hover:border-slate-700 hover:text-slate-700 hover:bg-slate-300">
               {" "}
-              Show ProductList
+              Show productList
             </span>
           </NavLink>
         </div>

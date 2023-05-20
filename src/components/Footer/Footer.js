@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer
       className="
-        bg-slate-800 w-screen text-slate-300  sticky inset-x-0 bottom-0 h-30"
+        bg-slate-800 w-screen text-slate-300  mt-auto h-30"
     >
       <div className=" w-2/3 ml-40  mr-8 flex justify-between items-center py-3 max-[600px]:ml-10 max-[600px]:w-full max-[600px]:pr-8">
         <ul className="flex flex-col text-sm max-[768px]:mx-8 max-[768px]:text-xs  max-[768px]:hidden">
@@ -20,7 +20,7 @@ const Footer = () => {
             {" "}
             <NavLink to="/ProductList">
               <span className="border-b-2 rounded-md px-1 border-slate-300 hover:text-slate-400 hover:border-slate-500">
-                ProductList
+                productList
               </span>
             </NavLink>
           </li>

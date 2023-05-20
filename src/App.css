@@ -30,6 +30,8 @@
 
 body{
   background-color :#0f172a;
+  display: flex;
+  flex-direction: column;
 
 }
 .toast-message {

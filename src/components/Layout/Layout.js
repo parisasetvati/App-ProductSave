@@ -2,7 +2,7 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 const Layout = ({children,productlist}) => {
     return (
-        <section className="w-full ">
+        <section className="w-full  flex flex-col">
        
 <Header totalItem={productlist.filter((p) => p.id > 0).length} /> 
 {children}

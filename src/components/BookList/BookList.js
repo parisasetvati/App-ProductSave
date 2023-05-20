@@ -1,11 +1,14 @@
 import { BiTrash, BiMessageSquareEdit } from "react-icons/bi";
 import { useState } from "react";
+import React from "react";
 import BookForm from "../BookForm/BookForm";
 import "react-tooltip/dist/react-tooltip.css";
 import { NavLink } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import ReactModal from "react-modal";
+import EditModal from "react-modal";
+
 const customStyles = {
   content: {
     top: "50%",
@@ -29,10 +32,20 @@ const BookList = ({
     category: "",
     creatEdit: "",
   });
+
   let subtitle;
+
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalIsOpen1, setIsOpen1] = useState(false);
+  const[idNumber,setIdnumber]=useState('');
   function openModal() {
     setIsOpen(true);
+  }
+  function openModal1() {
+    setIsOpen1(true);
+  }
+  function closeModal1() {
+    setIsOpen1(false);
   }
 
   function afterOpenModal() {
@@ -48,44 +61,46 @@ const BookList = ({
   const findCategory = (categoryId) => {
     return categories.find((c) => c.id === parseInt(categoryId)).category;
   };
-  const deleteProduct = (id) => {
-    const filterProduct = productlist.filter((p) => p.id !== id);
+  const deleteProduct = () => {
+   // console.log(parseInt(id));
+    const filterProduct = productlist.filter((p) => p.id !== parseInt(idNumber));
     setProductlist(filterProduct);
-    setIsOpen(false);
+    closeModal();
+    setIdnumber("");
   };
   const onUpdateProduct = (product) => {
     onUpdate(edit.id, product);
     if (product.productName && product.quantity && product.categoryId) {
       setEdit({ productName: "", id: null, category: "", creatEdit: "" });
+      closeModal1();
     }
   };
-  // const alert = alert.show('Some message', {
-  //   timeout: 2000, // custom timeout just for this one alert
-  //   type: 'success',
-  //   onOpen: () => {
-  //     deleteProduct();
-  //     console.log('hey')
-  //   }, // callback that will be executed after this alert open
-  //   onClose: () => {
-  //     console.log('closed')
-  //   } // callback that will be executed after this alert is removed
-  // })
+  const handleEdit = (products) => {
+    openModal1();
+    setEdit(products);
+  };
+  const handlerDelete = (id) => {
+   setIdnumber(id);
+    //deleteProduct(id);
+    openModal();
+  console.log(id);
+    //closeModal();
+  };
 
   const renderProduct = () => {
     return (
       <div className="flex flex-col   justify-center items-center mx-auto w-full ralative">
         <h1 className=" text-slate-200 text-lg font-bold border-b w-full py-2 my-5 border-slate-400 max-w-full max-[640px]:text-sm">
-          Product List
+          product List
         </h1>
         {productlist.map((products) => {
-          // console.log(products);
           return (
             <div
               key={products.id}
-              className=" w-full pb-6  px-3  text-sm font-bold  flex flex-row  items-center justify-between    text-slate-400  max-w-full mx-3 my-6  border-b border-slate-400 max-[640px]:flex-row max-[640px]:pb-6 max-[640px]:my-3 "
+              className=" w-full pb-4 px-3  text-sm font-bold  flex flex-row  items-center justify-between    text-slate-400  max-w-full mx-3 my-6  border-b border-slate-400 max-[640px]:flex-col max-[640px]:pb-6 max-[640px]:my-6 "
             >
-              <div > 
-                <span className="text-lg mx-6  "> {products.productName} </span>
+              <div className=" pb-4">
+                <span className="text-lg mx-6 "> {products.productName} </span>
               </div>
 
               <div className="flex items-center  ">
@@ -101,7 +116,7 @@ const BookList = ({
                 <div className="flex items-center ">
                   <button
                     className="mx-4 flex justify-center items-center border-red-700 border-2 w-8 h-8 bg-transparent text-slate-200 rounded-md text-sm hover:text-lg hover:text-red-700 hover:bg-slate-300 "
-                    onClick={openModal}
+                    onClick={()=>handlerDelete(products.id)}
                   >
                     <BiTrash className=" text-md font-bold" />
                   </button>
@@ -112,8 +127,9 @@ const BookList = ({
                       products.creatEdit &&
                       new Date(products.creatEdit).toLocaleString("fa-IR")
                     }
-                    onClick={() => setEdit(products)}
+                    onClick={() => handleEdit(products)}
                   >
+                    {/* () => setEdit(products) */}
                     <BiMessageSquareEdit className=" text-lg font-bold" />
                   </button>
                   <div>
@@ -123,15 +139,8 @@ const BookList = ({
                       )}
                     </span>
 
-                    {/* <div className="flex flex-col item-center justify-center "> */}
                     <Tooltip id="my-tooltip" />
                   </div>
-                  {/* <label className={`${products.creatEdit ? "": "hidden"} text-sm`}>Last Edit:</label> */}
-                  {/* <span className={`${products.creatEdit ? "": "hidden"} mx-1  w-20 h-10 bg-slate-300 border-2 border-slate-700      rounded-md px-8 py-3 flex justify-center items-center text-slate-500 text-sm "`}>{ new Date(products.creatEdit).toLocaleString("fa-IR")}</span>  */}
-                  {/* <div className={show ?  '' : 'hidden'} >
-      LastEdit:{ new Date(hover.creatEdit).toLocaleString("fa-IR")}
-     </div> */}
-                  {/* </div> */}
                 </div>
               </div>
               <ReactModal
@@ -146,11 +155,10 @@ const BookList = ({
                   <AiOutlineCloseCircle className="absolute top-2 right-4 font-bold  text-lg text-slate-200   hover:text-slate-500 hover:text-xl max-[600px]:hidden" />
                 </button>
 
-                {/* <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2> */}
                 <div className="relative mt-5">
                   <h2 className="text-slate-200 text-center font-bold  max-[900px]:font-normal max-[700px]:text-sm">
                     {" "}
-                    Do Sure Delete Product ?
+                    Do You Sure Delete Product
                   </h2>
                 </div>
                 <div className="flex justify-center items-center  mb-4">
@@ -163,12 +171,29 @@ const BookList = ({
 
                   <button
                     className=" w-28 h-8 bg-slate-600 font-bold text-slate-200 rounded-md hover:bg-slate-300  hover:text-slate-900 m-4  max-[900px]:w-28 max-[900px]:font-normal max-[700px]:text-sm max-[500px]:h-6 "
-                    onClick={() => deleteProduct(products.id)}
+                    onClick={() =>deleteProduct()}
                   >
                     Delete
                   </button>
                 </div>
               </ReactModal>
+              <EditModal
+                isOpen={modalIsOpen1}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={() => closeModal1}
+                style={{ overlay: { background: "transparent" } }}
+                contentLabel=" Modal"
+                className="w-3/5 h-5/7 flex flex-col justify-center item-center relative z-10  top-28 m-auto rounded-md bg-slate-800 border border-slate-400 max-[900px]:w-4/5 2xl:w-2/5"
+              >
+                <button onClick={closeModal1}>
+                  <AiOutlineCloseCircle className="absolute top-2 right-4 font-bold  text-lg text-slate-200   hover:text-slate-500 hover:text-xl max-[600px]:hidden" />
+                </button>
+                <BookForm
+                  addproduct={onUpdateProduct}
+                  addcategory={addcategory}
+                  edit={edit}
+                />
+              </EditModal>
             </div>
           );
         })}
@@ -183,19 +208,7 @@ const BookList = ({
       </div>
     );
   };
-  return (
-    <div className="w-3/5">
-      {edit.id ? (
-        <BookForm
-          addproduct={onUpdateProduct}
-          addcategory={addcategory}
-          edit={edit}
-        />
-      ) : (
-        renderProduct()
-      )}
-    </div>
-  );
+  return <div className="w-3/5"> {renderProduct()}</div>;
 };
 
 export default BookList;

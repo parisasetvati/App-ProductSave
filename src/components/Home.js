@@ -171,12 +171,12 @@ setSearchValue(e.target.value.trim().toLowerCase());
       <Routes>
             
 
-      <Route path="/" element={<div className="   w-full flex flex-col items-center justify-center mt-24 max-w-full">
+      <Route path="/" element={<div className="   w-full flex flex-col items-center justify-center mt-24 max-w-full flex-1 min-h-screen">
       <AddCategory categoryHandler={AddToCategoryHandler} />
       <BookForm addproduct={addproduct} addcategory={addcategory}  />
       </div>} />
             <Route path="/About" element={<About />} />
-            <Route path="/ProductList" element={  <div className=" w-full flex flex-col items-center justify-center mt-24">
+            <Route path="/ProductList" element={  <div className=" w-full flex flex-col items-center justify-center mt-24 flex-1 min-h-screen">
       <section className="mx-6 my-8 w-3/5">
         
 
