@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Formik, useFormik } from "formik";
 import * as Yup from "yup";
-import { toast } from "react-toastify";
+
 import "react-notifications/lib/notifications.css";
 const validationSchema = Yup.object({
   category: Yup.string()
@@ -21,18 +21,11 @@ const AddCategory = ({ categoryHandler }) => {
   const [categoris, setCategoris] = useState({ category: "", description: "" });
   const [isShow, setIsShow] = useState(false);
   const onSubmit = (id, { resetForm }) => {
-    console.log(id);
-    if (id.category === "" || id.description === "") {
-      //   // setEnterValue({enterProduct:false,enterCategory:false,enterQuantity:false});
-
-      toast.error("please Enter category Complete!", {
-        className: "toast-message",
-      });
-    } else {
-      //   // setProduct(id);
+   
+      
       categoryHandler(id);
       resetForm();
-    }
+    
   };
   const formik = useFormik({
     initialValues: initialValues,
@@ -42,16 +35,7 @@ const AddCategory = ({ categoryHandler }) => {
     enableReinitialize: true,
   });
 
-  // const addCategoryHandler = ({ target }) => {
-  //   console.log(target);
-
-  //   setCategoris({ ...categoris, [target.name]: target.value });
-  // };
-  // const AddToSelectHandler = (e) => {
-  //   e.preventDefault();
-  //   categoryHandler(categoris);
-  //   setCategoris({ category: "", description: "" });
-  // };
+ 
 
   return (
     <section className="w-full mx-2 max-w-2xl relative">
@@ -65,13 +49,13 @@ const AddCategory = ({ categoryHandler }) => {
             onSubmit={formik.handleSubmit}
             className="flex  flex-col   text-xs w-full my-5 text-slate-200"
           >
-            <div className="flex flex-row  my-5 w-full ml-5  max-[400px]:flex-col max-[400px]:items-start max-[400px]:ml-2">
-              <label className="text-xs w-24  text-slate-200  max-[400px]:ml-4">
+            <div className="flex flex-row  my-5 w-full ml-8  max-[600px]:flex-col max-[600px]:items-start max-[600px]:ml-2">
+              <label className="text-xs w-20  text-slate-200  max-[600px]:ml-4">
                 {" "}
                 Category :
               </label>
               <input
-                className="w-2/5 h-8 rounded-md  bg-transparent focus:outline focus:outline-none  focus:outline-offset-0 focus:outline-transparent focus:border focus:border-slate-200 max-[400px]:ml-4 max-[400px]:mt-4 max-[400px]:w-4/5"
+                className="w-3/6 h-8  rounded-md  bg-transparent focus:outline focus:outline-none  focus:outline-offset-0 focus:outline-transparent focus:border focus:border-slate-200 max-[600px]:ml-4 max-[600px]:mt-4 max-[600px]:w-4/5"
                 type="text"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -84,13 +68,13 @@ const AddCategory = ({ categoryHandler }) => {
                 </div>
               )}
             </div>
-            <div className="flex flex-row mb-5 ml-5 w-full max-[400px]:flex-col max-[400px]:items-start max-[400px]:ml-2">
-              <label className=" text-xs w-24 text-slate-200  max-[400px]:ml-4">
+            <div className="flex flex-row mb-5 ml-8 w-full max-[600px]:flex-col max-[600px]:items-start max-[600px]:ml-2">
+              <label className=" text-xs w-20 text-slate-200  max-[600px]:ml-4">
                 {" "}
                 Description :
               </label>
               <textarea
-                className="w-2/5 h-15 rounded-md  bg-transparent  border-slate-500 max-[400px]:ml-4 max-[400px]:mt-4 max-[400px]:w-4/5"
+                className="w-3/6  h-15 rounded-md  bg-transparent  border-slate-500 max-[600px]:ml-4 max-[600px]:mt-4 max-[600px]:w-4/5"
                 type="text"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}

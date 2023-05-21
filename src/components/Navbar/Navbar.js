@@ -11,9 +11,9 @@ const item = [
 
 const Navbar = ({totalItem}) => {
     return (
-        <header className="w-full h-24 fixed top-0 z-10  bg-slate-800 ">
+        <header className="w-full h-24 fixed top-0 z-10  bg-slate-800 max-w-full ">
 
-<div className="w-2/3 text-slate-200  h-full  flex flex-row justify-between items-center ml-40  max-[768px]:pr-4  max-[768px]:ml-4">
+<div className="w-2/3 text-slate-200  h-full  flex flex-row justify-between items-center mx-auto  max-[768px]:pr-4  max-[768px]:ml-4  ">
 
        
        

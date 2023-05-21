@@ -8,17 +8,8 @@ import { Tooltip } from "react-tooltip";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import ReactModal from "react-modal";
 import EditModal from "react-modal";
+import { FaBlackTie } from "react-icons/fa";
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
 const BookList = ({
   productlist,
   categories,
@@ -37,7 +28,7 @@ const BookList = ({
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalIsOpen1, setIsOpen1] = useState(false);
-  const[idNumber,setIdnumber]=useState('');
+  const [idNumber, setIdnumber] = useState("");
   function openModal() {
     setIsOpen(true);
   }
@@ -62,8 +53,10 @@ const BookList = ({
     return categories.find((c) => c.id === parseInt(categoryId)).category;
   };
   const deleteProduct = () => {
-   // console.log(parseInt(id));
-    const filterProduct = productlist.filter((p) => p.id !== parseInt(idNumber));
+    // console.log(parseInt(id));
+    const filterProduct = productlist.filter(
+      (p) => p.id !== parseInt(idNumber)
+    );
     setProductlist(filterProduct);
     closeModal();
     setIdnumber("");
@@ -80,11 +73,9 @@ const BookList = ({
     setEdit(products);
   };
   const handlerDelete = (id) => {
-   setIdnumber(id);
-    //deleteProduct(id);
+    setIdnumber(id);
+
     openModal();
-  console.log(id);
-    //closeModal();
   };
 
   const renderProduct = () => {
@@ -116,7 +107,7 @@ const BookList = ({
                 <div className="flex items-center ">
                   <button
                     className="mx-4 flex justify-center items-center border-red-700 border-2 w-8 h-8 bg-transparent text-slate-200 rounded-md text-sm hover:text-lg hover:text-red-700 hover:bg-slate-300 "
-                    onClick={()=>handlerDelete(products.id)}
+                    onClick={() => handlerDelete(products.id)}
                   >
                     <BiTrash className=" text-md font-bold" />
                   </button>
@@ -171,7 +162,7 @@ const BookList = ({
 
                   <button
                     className=" w-28 h-8 bg-slate-600 font-bold text-slate-200 rounded-md hover:bg-slate-300  hover:text-slate-900 m-4  max-[900px]:w-28 max-[900px]:font-normal max-[700px]:text-sm max-[500px]:h-6 "
-                    onClick={() =>deleteProduct()}
+                    onClick={() => deleteProduct()}
                   >
                     Delete
                   </button>
